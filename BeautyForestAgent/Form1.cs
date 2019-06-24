@@ -20,6 +20,10 @@ namespace BeautyForestAgent
             this.Visible = visible;
             this.ntiTray.Visible = !visible;
         }
+        public string Title
+        {
+            set { this.Text = value; }
+        }
 
         private void 폼보이기ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -46,6 +50,23 @@ namespace BeautyForestAgent
         private void NtiTray_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             VisibleChange(true);
+        }
+
+        private void 끝내기ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Application.ExitThread();  // 어플리케이션 쓰레드 완전 종료
+        }
+
+        private void 수정ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowModal();
+        }
+
+        private static void ShowModal()
+        {
+            FormModify m = new FormModify();
+            m.Title = "모달 창띄우기";
+            m.ShowDialog();
         }
     }
 
